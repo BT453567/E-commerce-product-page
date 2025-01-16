@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./js/script.js"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+
+  <!-- mobile overlay and menu -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay" aria-hidden='true'></div>
+  <nav id="nav-bar-mobile" class="nav-bar-mobile" aria-hidden="true">
+    <button id="mobile-menu-close" class="mobile-menu-close remove-default-button">
+      <svg viewBox="0 0 14 15" width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/></svg>
+    </button>
+    <ul class="nav-bar-mobile__ul flex column">
+      <li>
+        <a class="nav-bar-mobile__a" href="#">Collections</a>
+      </li>
+      <li>
+        <a class="nav-bar-mobile__a" href="#">Men</a>
+      </li>
+      <li>
+        <a class="nav-bar-mobile__a" href="#">Women</a>
+      </li>
+      <li>
+        <a class="nav-bar-mobile__a" href="#">About</a>
+      </li>
+      <li>
+        <a class="nav-bar-mobile__a" href="#">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="nav-container flex space-between">
+
+      <!-- cart popup -->
+      <div id="popup-cart" class="popup-cart flex column hide">
+        <div class="popup-cart__top-container">
+          <h2 class="cart-heading">Cart</h2>
+        </div>
+        <div class="cart-horiz-line"></div>
+        <div class="popup-cart__bottom-container flex column">
+          <div id="empty-text" class="cart-empty-text-wrapper">
+            <span class="cart-empty-text">Your cart is empty.</span>
+          </div>
+          <div id="cart-contents" class="cart-contents flex column hide">
+            <div class="cart-item flex">
+              <img class="cart-thumbnail" src="./assets/images/image-product-1-thumbnail.jpg" alt="">
+              <div class="cart-item__details-wrapper flex column">
+                <span id="item-title" class="item-title">Fall Limited Edition Sneakers</span>
+                <div class="cart-item__price-wrapper">
+                  <span id="item-price">$125.00</span>
+                  <span>x</span>
+                  <span id="item-quantity">0</span>
+                  <span id="item-total-price" class="item-total-price">$0</span>
+                </div>
+              </div>
+              <button id="delete-item" class="delete-button remove-default-button">
+                <img class="delete-icon" src="./assets/images/icon-delete.svg" alt="">
+              </button>
+            </div>
+            <button id="checkout" class="button--checkout remove-default-button">Checkout</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-nav flex">
+        
+        <!-- mobile menu button -->
+        <button id="mobile-menu-button" class="mobile-menu-button remove-default-button" aria-controls="mobile-menu-bar" aria-expanded="false">
+          <img src="./assets/images/icon-menu.svg" alt="">
+        </button>
+
+        <img class="logo" src="./assets/images/logo.svg" alt="">
+        
+        <nav class="nav-bar">
+          <ul class="flex">
+            <li class="nav-bar__menu-item flex column space-between">
+              <a href="#">Collections</a>
+              <div class="nav-bar__underline"></div>
+            </li>
+            <li class="nav-bar__menu-item flex column space-between">
+              <a href="#">Men</a>
+              <div class="nav-bar__underline"></div>
+            </li>
+            <li class="nav-bar__menu-item flex column space-between">
+              <a href="#">Women</a>
+              <div class="nav-bar__underline"></div>
+            </li>
+            <li class="nav-bar__menu-item flex column space-between">
+              <a href="#">About</a>
+              <div class="nav-bar__underline"></div>
+            </li>
+            <li class="nav-bar__menu-item flex column space-between">
+              <a href="#">Contact</a>
+              <div class="nav-bar__underline"></div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="user-details-wrapper flex column">
+        <div class="user-details flex">
+          <button id="cart-button" class="remove-default-button button--cart" aria-expanded="false">
+            <div id="cart-button-quantity" class="cart-button-quantity hide">0</div>
+            <svg class="cart" viewBox="0 0 22 20" width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#69707D" fill-rule="nonzero"/></svg>
+          </button>
+          <button class="remove-default-button button--avatar">
+            <img class="avatar" src="./assets/images/image-avatar.png" alt="">
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="main__content-wrapper">
+      <div class="main__content-container">
+        <div class="main__images-container flex column">
+          <div id="main-image-button" class="main-image-button remove-default-button">
+            <img id="main-image" class="product-image" src="./assets/images/image-product-1.jpg" alt="">
+            <button id="previous-mobile" class="previous-mobile remove-default-button">
+              <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+            </button>
+            <button id="next-mobile" class="next-mobile remove-default-button">
+              <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+            </button>
+          </div>
+          <div class="main__thumbnail-images">
+            <button class="thumbnail-button remove-default-button selected" data-img="1">
+              <img class="thumbnail-image" src="./assets/images/image-product-1-thumbnail.jpg" alt="">
+            </button>
+            <button class="thumbnail-button remove-default-button" data-img="2">
+              <img class="thumbnail-image" src="./assets/images/image-product-2-thumbnail.jpg" alt="">
+            </button>
+            <button class="thumbnail-button remove-default-button" data-img="3">
+              <img class="thumbnail-image" src="./assets/images/image-product-3-thumbnail.jpg" alt="">
+            </button>
+            <button class="thumbnail-button remove-default-button" data-img="4">
+              <img class="thumbnail-image" src="./assets/images/image-product-4-thumbnail.jpg" alt="">
+            </button>
+          </div>
+        </div>
+        <div></div>
+        <div class="main__details-container flex column">
+          <p class="all-caps company-text">Sneaker Company</p>
+          <h1 class="h1">Fall Limited Edition Sneakers</h1>
+          <p class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a 
+            durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <div class="price-container flex column">
+            <div class="price-container__top flex">
+              <span class="price">$125.00</span><span class="discount">50%</span>
+            </div>
+            <div class="price-container__bottom">
+              <span class="line-through-price">$250.00</span>
+            </div>
+          </div>
+          <div class="button-container flex">
+            <div class="counter-container flex">
+              <span id="counter">0</span>
+              <button id="decrement" class="remove-default-button decrement-button flex">
+                <svg width="12" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z" id="a"/></defs><use fill="#FF7E1B" fill-rule="nonzero" xlink:href="#a"/></svg>
+              </button>
+              <button id="increment" class="remove-default-button increment-button">
+                <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z" id="b"/></defs><use fill="#FF7E1B" fill-rule="nonzero" xlink:href="#b"/></svg>
+              </button>
+            </div>
+            <button id="add-to-cart" class="button--add-to-cart remove-default-button">Add to cart</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+  </main>
+
+  <!-- image display overlay -->
+
+  <div id="overlay" class="image-overlay hide">
+    <div class="image-overlay__container flex column">
+      <button id="close-overlay" class="close-overlay remove-default-button">
+        <svg viewBox="0 0 14 15" width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/></svg>
+      </button>
+      <div class="image-overlay__image-wrapper">
+        <img id="overlay-main-image" src="./assets/images/image-product-1.jpg" alt="">
+        <button id="previous" class="previous remove-default-button">
+          <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+        </button>
+        <button id="next" class="next remove-default-button">
+          <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
+        </button>
+      </div>
+      <div class="image-overlay__thumbnail-images">
+        <button class="overlay-thumbnail-button remove-default-button" data-img="1">
+          <img class="thumbnail-image" src="./assets/images/image-product-1-thumbnail.jpg" alt="">
+        </button>
+        <button class="overlay-thumbnail-button remove-default-button" data-img="2">
+          <img class="thumbnail-image" src="./assets/images/image-product-2-thumbnail.jpg" alt="">
+        </button>
+        <button class="overlay-thumbnail-button remove-default-button" data-img="3">
+          <img class="thumbnail-image" src="./assets/images/image-product-3-thumbnail.jpg" alt="">
+        </button>
+        <button class="overlay-thumbnail-button remove-default-button" data-img="4">
+          <img class="thumbnail-image" src="./assets/images/image-product-4-thumbnail.jpg" alt="">
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
