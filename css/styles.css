@@ -672,6 +672,8 @@ main {
 
 @media only screen and (max-width: 800px) {
 
+
+
     header {
         padding-inline: 1.5rem;
     }
@@ -747,6 +749,20 @@ main {
 
     .description {
         margin-top: 0;
+    }
+
+    /* Prevent the button flashing when user presses in mobile */
+    .main-image-button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .main-image-button:focus {
+        outline: none !important;
     }
 
     .main-image-button {
