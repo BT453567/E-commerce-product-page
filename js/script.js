@@ -27,6 +27,23 @@ const navBarMobile = document.getElementById('nav-bar-mobile');
 const body = document.getElementById("body");
 const mobileMenuClose = document.getElementById("mobile-menu-close");
 
+// preload images
+
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+preload(
+    "./assets/images/image-product-1.jpg",
+    "./assets/images/image-product-2.jpg",
+    "./assets/images/image-product-3.jpg",
+    "./assets/images/image-product-4.jpg"
+)
+
 // Cart
 
 let counter = 0;
@@ -199,7 +216,7 @@ function nextPreviousMobile(e, direction) {
     }
     const dataImgValue = button.getAttribute('data-img');
     const imgValueInt = parseInt(dataImgValue, 10);
-    console.log(button);
+    
     if (direction === "next") {
         if(imgValueInt < 4 ) {
             changeImage(String(imgValueInt + 1));
@@ -223,10 +240,8 @@ nextMobile.addEventListener('click', (e)=> nextPreviousMobile(e, "next"));
 // Mobile menu
 
 function overlayListener() {
-    console.log("function listener start");
     mobileMenuOverlay.setAttribute('aria-hidden', true);
     mobileMenuOverlay.removeEventListener('transitionend', overlayListener);
-    console.log("function listener end");
 }
 
 function menuListener() {
